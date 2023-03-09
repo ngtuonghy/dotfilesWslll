@@ -200,7 +200,7 @@ return packer.startup(function(use)
 	----bookmark-------
 	use("MattesGroeger/vim-bookmarks")
 	use("tom-anders/telescope-vim-bookmarks.nvim")
-	-- init.lua
+	use({ "kevinhwang91/nvim-hlslens" })
 	if packer_bootstrap then
 		require("packer").sync()
 	end
