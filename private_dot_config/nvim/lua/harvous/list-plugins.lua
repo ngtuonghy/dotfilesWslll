@@ -1,5 +1,4 @@
-return {
-	-- packer can manage itself
+return { -- packer can manage itself
 	"nvim-lua/plenary.nvim", -- lua functions that many plugins
 	"EdenEast/nightfox.nvim", -- preferred colorscheme
 	{ "catppuccin/nvim", as = "catppuccin" }, -- Using Packer
@@ -48,7 +47,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
-			local ts_update = dependencies("nvim-treesitter.install").update({ with_sync = true })
+			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
 	},
@@ -80,16 +79,12 @@ return {
 	},
 	"lukas-reineke/indent-blankline.nvim",
 	"theHamsta/nvim-dap-virtual-text",
-	({
+	{
 		"mvllow/modes.nvim",
-		tag = "v0.2.0",
-		config = function()
-			require("modes").setup()
-		end,
-	}),
+	},
 	"folke/which-key.nvim", -- refer to the configuration section below
 	"norcalli/nvim-colorizer.lua",
-	'manzeloth/live-server',
+	"manzeloth/live-server",
 	"ray-x/lsp_signature.nvim",
 	"gpanders/editorconfig.nvim",
 	{
@@ -105,4 +100,26 @@ return {
 	{ "kevinhwang91/nvim-hlslens" },
 	"karb94/neoscroll.nvim",
 	"numToStr/Comment.nvim",
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
+	{
+		-- integrate with lualine
+		"nvim-lualine/lualine.nvim",
+		event = { "VimEnter" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"linrongbin16/lsp-progress.nvim",
+		},
+	},
+	{ "axkirillov/easypick.nvim", dependencies = "nvim-telescope/telescope.nvim" },
 }

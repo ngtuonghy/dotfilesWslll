@@ -14,9 +14,11 @@ require("harvous.plugins.general_control.other")
 require("harvous.plugins.syntax.autopairs")
 require("harvous.plugins.syntax.rainbow2")
 require("harvous.plugins.syntax.colorizer")
+require("harvous.plugins.syntax.modes")
 --file and search
 require("harvous.plugins.files_search.telescope")
 require("harvous.plugins.files_search.neo-tree")
+require("harvous.plugins.files_search.telescope-pickers")
 --git
 require("harvous.plugins.git.gitsigns")
 
