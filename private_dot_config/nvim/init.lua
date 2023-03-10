@@ -1,5 +1,6 @@
 --plugin manager--
 require("harvous.plugins-setup")
+require("harvous.list-plugins")
 require("harvous.plugins.mason")
 --core--
 require("harvous.core.options")
