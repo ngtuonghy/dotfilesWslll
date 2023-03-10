@@ -45,7 +45,6 @@ return packer.startup(function(use)
 	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
 	-- commenting with gc
-	use("numToStr/Comment.nvim")
 
 	-- file explorer
 	-- Unless you are still migrating, remove the deprecated commands from v1.x
@@ -91,6 +90,7 @@ return packer.startup(function(use)
 	-- managing & installing lsp servers, linters & formatters
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
 	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+	--use("nvim-lua/lsp-status.nvim")
 
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
@@ -115,6 +115,8 @@ return packer.startup(function(use)
 			ts_update()
 		end,
 	})
+	use("nvim-treesitter/nvim-treesitter-context")
+
 	--use('p00f/nvim-ts-rainbow')
 	use("HiPhish/nvim-ts-rainbow2")
 	-- auto closing
@@ -139,8 +141,6 @@ return packer.startup(function(use)
 	--use 'puremourning/vimspector'
 	use("mfussenegger/nvim-dap-python")
 	--now
-
-	use({ "krivahtoo/silicon.nvim", run = "./install.sh" })
 
 	use("rcarriga/nvim-notify")
 	use("j-hui/fidget.nvim")
@@ -181,7 +181,6 @@ return packer.startup(function(use)
 	use("ray-x/lsp_signature.nvim")
 
 	use("gpanders/editorconfig.nvim")
-	use("sudoerwx/vim-ray-so-beautiful")
 
 	use({
 		"phaazon/hop.nvim",
@@ -201,6 +200,9 @@ return packer.startup(function(use)
 	use("MattesGroeger/vim-bookmarks")
 	use("tom-anders/telescope-vim-bookmarks.nvim")
 	use({ "kevinhwang91/nvim-hlslens" })
+	-- General plugins
+	use("karb94/neoscroll.nvim")
+	use("numToStr/Comment.nvim")
 	if packer_bootstrap then
 		require("packer").sync()
 	end
