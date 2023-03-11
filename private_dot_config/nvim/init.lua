@@ -45,4 +45,4 @@ require("harvous.plugins.bookmark")
 
 require("harvous.plugins.which-key")
 require("harvous.plugins.silicon")
---[[ require("harvous.plugins.barbecue") ]]
+require("harvous.plugins.barbecue")

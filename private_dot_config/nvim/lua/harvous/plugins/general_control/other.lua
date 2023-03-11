@@ -11,10 +11,6 @@ require("neoscroll").setup({ -- All these keys will be mapped to their correspon
 })
 
 require("Comment").setup()
-
-require("navigator").setup({
-	mason = true,
-})
 require("inc_rename").setup({
 	cmd_name = "IncRename", -- the name of the command
 	hl_group = "Substitute", -- the highlight group used for highlighting the identifier's new name

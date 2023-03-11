@@ -38,7 +38,7 @@ require("navigator").setup({
 		diagnostic_head_severity_1 = "🈲",
 		-- refer to lua/navigator.lua for more icons setups
 	},
-	mason = false, -- set to true if you would like use the lsp installed by williamboman/mason
+	mason = true, -- set to true if you would like use the lsp installed by williamboman/mason
 	lsp = {
 		enable = true, -- skip lsp setup, and only use treesitter in navigator.
 		-- Use this if you are not using LSP servers, and only want to enable treesitter support.
@@ -46,6 +46,7 @@ require("navigator").setup({
 		-- use `disable_lsp = "all"` instead.
 		-- If disabled, make sure add require('navigator.lspclient.mapping').setup({bufnr=bufnr, client=client}) in your
 		-- own on_attach
+		hover = false,
 		code_action = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
 		code_lens_action = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
 		document_highlight = true, -- LSP reference highlight,
@@ -68,7 +69,7 @@ require("navigator").setup({
 		-- default value: {}
 		diagnostic = {
 			underline = true,
-			virtual_text = true, -- show virtual for diagnostic message
+			virtual_text = false, -- show virtual for diagnostic message
 			update_in_insert = false, -- update diagnostic message in insert mode
 		},
 

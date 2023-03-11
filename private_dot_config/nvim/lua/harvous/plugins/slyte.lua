@@ -96,3 +96,4 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
 ))
 
 wilder.setup({modes = {':', '/', '?'}})
+require("lsp_lines").setup()

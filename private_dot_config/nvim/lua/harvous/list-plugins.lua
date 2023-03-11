@@ -156,4 +156,10 @@ return { -- packer can manage itself "nvim-lua/plenary.nvim", -- lua functions t
 			-- config goes here
 		end,
 	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	},
 }
