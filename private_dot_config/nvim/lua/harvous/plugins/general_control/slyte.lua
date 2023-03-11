@@ -1,4 +1,4 @@
-require 'todo-comments'.setup()
+require("todo-comments").setup()
 
 -- require("transparent").setup({
 --   enable = true, -- boolean: enable transparent
@@ -8,12 +8,13 @@ require 'todo-comments'.setup()
 --   exclude = {}, -- table: groups you don't want to clear
 -- })
 --
-require 'noice'.setup({
-  messages = {
-    enable = false
-  }
+require("noice").setup({
+	--	presets = { inc_rename = true },
+	messages = {
+		enable = true,
+	},
 })
-require 'notify'.setup({
-  background_colour = "#000000",
-  render = 'minimal'
+require("notify").setup({
+	background_colour = "#000000",
+	render = "minimal",
 })

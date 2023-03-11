@@ -1,5 +1,4 @@
-return { -- packer can manage itself
-	"nvim-lua/plenary.nvim", -- lua functions that many plugins
+return { -- packer can manage itself "nvim-lua/plenary.nvim", -- lua functions that many plugins
 	"EdenEast/nightfox.nvim", -- preferred colorscheme
 	{ "catppuccin/nvim", as = "catppuccin" }, -- Using Packer
 	"navarasu/onedark.nvim",
@@ -85,7 +84,7 @@ return { -- packer can manage itself
 	"folke/which-key.nvim", -- refer to the configuration section below
 	"norcalli/nvim-colorizer.lua",
 	"manzeloth/live-server",
-	"ray-x/lsp_signature.nvim",
+	--	"ray-x/lsp_signature.nvim",
 	"gpanders/editorconfig.nvim",
 	{
 		"phaazon/hop.nvim",
@@ -122,4 +121,39 @@ return { -- packer can manage itself
 		},
 	},
 	{ "axkirillov/easypick.nvim", dependencies = "nvim-telescope/telescope.nvim" },
+	{
+		"anuvyklack/windows.nvim",
+		dependencies = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
+		config = function()
+			vim.o.winwidth = 10
+			vim.o.winminwidth = 10
+			vim.o.equalalways = false
+			require("windows").setup()
+		end,
+	},
+	-- Lua
+	{
+		"narutoxy/silicon.lua",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("silicon").setup({})
+		end,
+	},
+
+	{
+		"ray-x/navigator.lua",
+		dependencies = {
+			{ "ray-x/guihua.lua", build = "cd lua/fzy && make" },
+			{ "neovim/nvim-lspconfig" },
+		},
+	},
+	{
+		"gelguy/wilder.nvim",
+		config = function()
+			-- config goes here
+		end,
+	},
 }

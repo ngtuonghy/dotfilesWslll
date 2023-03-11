@@ -24,6 +24,7 @@ local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- set keybinds
+	--[[  config.lsp.hover.enabled = false ]]
 	keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 	keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration
 	keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- see definition and make edits in window

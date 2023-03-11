@@ -87,3 +87,6 @@ require("nvim-autopairs").setup({
 })
 keymap.set("n", "ma", "<cmd>lua require('telescope').extensions.vim_bookmarks.all()<cr>")
 keymap.set("n", "mn", "<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<cr>")
+keymap.set("v", "<Leader>s", function()
+	silicon.visualise_api({})
+end)

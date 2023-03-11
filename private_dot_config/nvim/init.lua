@@ -15,6 +15,7 @@ require("harvous.plugins.syntax.autopairs")
 require("harvous.plugins.syntax.rainbow2")
 require("harvous.plugins.syntax.colorizer")
 require("harvous.plugins.syntax.modes")
+require("harvous.plugins.syntax.navigator")
 --file and search
 require("harvous.plugins.files_search.telescope")
 require("harvous.plugins.files_search.neo-tree")
@@ -43,3 +44,5 @@ require("harvous.plugins.nvim-hlslens")
 require("harvous.plugins.bookmark")
 
 require("harvous.plugins.which-key")
+require("harvous.plugins.silicon")
+--[[ require("harvous.plugins.barbecue") ]]
