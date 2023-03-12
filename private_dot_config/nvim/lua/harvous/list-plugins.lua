@@ -2,6 +2,7 @@ return { -- packer can manage itself "nvim-lua/plenary.nvim", -- lua functions t
 	"EdenEast/nightfox.nvim", -- preferred colorscheme
 	{ "catppuccin/nvim", as = "catppuccin" }, -- Using Packer
 	"navarasu/onedark.nvim",
+	"folke/tokyonight.nvim",
 	"sainnhe/everforest",
 	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
 	"szw/vim-maximizer", -- maximizes and restores current window
@@ -151,15 +152,20 @@ return { -- packer can manage itself "nvim-lua/plenary.nvim", -- lua functions t
 		},
 	},
 	{
-		"gelguy/wilder.nvim",
-		config = function()
-			-- config goes here
-		end,
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 	},
 	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		"beauwilliams/focus.nvim",
 		config = function()
-			require("lsp_lines").setup()
+			require("focus").setup()
 		end,
 	},
+	-- Or lazy load with `module` option. See further down for info on how to lazy load when using FocusSplit commands
+	-- Or lazy load this plugin by creating an arbitrary command using the cmd option in packer.nvim
+	-- use { 'beauwilliams/focus.nvim', cmd = { "FocusSplitNicely", "FocusSplitCycle" }, module = "focus",
+	--     config = function()
+	--         require("focus").setup({hybridnumber = true})
+	--     end
+	-- }
+	Plug("glepnir/galaxyline.nvim"),
 }

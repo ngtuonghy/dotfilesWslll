@@ -194,4 +194,7 @@ return {
 			require("lsp_lines").setup()
 		end,
 	},
+	'folke/tokyonight.nvim',
+	'beauwilliams/focus.nvim',
+	'glepnir/galaxyline.nvim',
 }
