@@ -82,9 +82,7 @@ keymap.set("n", "<F5>", "<cmd>DapContinue<cr>")
 keymap.set("n", "<leader>dr", "<cmd>DapRestart<cr>")
 
 keymap.set("n", "<leader>ta", "<cmd>ToggleAlternate<cr>")
-require("nvim-autopairs").setup({
-	disable_filetype = { "TelescopePrompt", "vim" },
-})
+
 keymap.set("n", "ma", "<cmd>lua require('telescope').extensions.vim_bookmarks.all()<cr>")
 keymap.set("n", "mn", "<cmd>lua require('telescope').extensions.vim_bookmarks.current_file()<cr>")
 keymap.set("v", "<Leader>s", function()

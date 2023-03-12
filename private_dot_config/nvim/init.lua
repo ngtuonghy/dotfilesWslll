@@ -1,48 +1,45 @@
---plugin manager--
-require("harvous.plugins-setup")
-require("harvous.list-plugins")
-require("harvous.plugins.mason")
---core--
+require("manager-plugins.plugins-setup")
+require("manager-plugins.list-plugins")
+
 require("harvous.core.options")
 require("harvous.core.keymaps")
 require("harvous.core.colorscheme")
-require("harvous.core.autocmd")
---general and control
-require("harvous.plugins.general_control.slyte")
-require("harvous.plugins.general_control.other")
---syntax
-require("harvous.plugins.syntax.autopairs")
-require("harvous.plugins.syntax.rainbow2")
-require("harvous.plugins.syntax.colorizer")
-require("harvous.plugins.syntax.modes")
-require("harvous.plugins.syntax.navigator")
---file and search
-require("harvous.plugins.files_search.telescope")
-require("harvous.plugins.files_search.neo-tree")
-require("harvous.plugins.files_search.telescope-pickers")
---git
-require("harvous.plugins.git.gitsigns")
 
-require("harvous.plugins.lualine")
-require("harvous.plugins.nvim-cmp")
+require("harvous.noice")
 
-require("harvous.plugins.lsp.mason-nvim-dap")
-require("harvous.plugins.lsp.lspconfig")
---require("harvous.plugins.lsp.lsp_signature")
-require("harvous.plugins.lsp.null-ls")
+--require "harvous. "
+require("harvous.lsp.null-ls")
+require("harvous.lsp.mason")
+require("harvous.lsp.lspconfig")
 
-require("harvous.plugins.treesitter")
-require("harvous.plugins.toggleterm")
-require("harvous.plugins.dap")
---require("harvous.plugins.dapui")
+require("harvous.syntax.autopairs")
+require("harvous.syntax.rainbow2")
+require("harvous.syntax.colorizer")
+require("harvous.syntax.modes")
+require("harvous.syntax.navigator")
 
-require("harvous.plugins.bufferline")
-require("harvous.plugins.alpha-nvim")
-require("harvous.plugins.indent-blankline")
-require("harvous.plugins.nvim-hop")
-require("harvous.plugins.nvim-hlslens")
-require("harvous.plugins.bookmark")
-
-require("harvous.plugins.which-key")
-require("harvous.plugins.silicon")
-require("harvous.plugins.barbecue")
+require("harvous.cmp")
+require("harvous.telescope")
+require("harvous.hlslens")
+-- require "harvous.gitsigns"
+require("harvous.treesitter")
+-- require "harvous.autopairs"
+-- require "harvous.comment"
+-- require "harvous.nvim-tree"
+require("harvous.bufferline")
+require("harvous.lualine")
+-- require "harvous.toggleterm"
+-- -- require "harvous.project"
+-- require "harvous.impatient"
+-- require "harvous.indentline"
+require("harvous.alpha-nvim")
+require("harvous.autocommands")
+-- require "harvous.sessions"
+-- require "harvous.dressing"
+-- require "harvous.illuminate"
+-- require "harvous.vimtex"
+-- require "harvous.surround"
+-- require "harvous.undotree"
+-- require "harvous.luasnip"
+-- --require "harvous.yanky"
+-- require "harvous.autolist"
