@@ -1,37 +1,40 @@
 return {
---depencies
- "nvim-lua/plenary.nvim",
- "nvim-tree/nvim-web-devicons",
- "MunifTanjim/nui.nvim",
+	--depencies
+	"nvim-lua/plenary.nvim",
+	"nvim-tree/nvim-web-devicons",
+	"MunifTanjim/nui.nvim",
 
-{
- "EdenEast/nightfox.nvim", -- preferred colorscheme
-	"catppuccin/nvim", as = "catppuccin", -- Using Packer
-	"navarasu/onedark.nvim",
-	"sainnhe/everforest",
-	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
-	"szw/vim-maximizer", -- maximizes and restores current window
-	"inkarkat/vim-ReplaceWithRegister",
-},
---file folder
-		"nvim-neo-tree/neo-tree.nvim", branch = "v2.x",
---cmp
-  { "hrsh7th/nvim-cmp",
-	  "hrsh7th/cmp-nvim-lsp",
-  -- buffer completions
-   "hrsh7th/cmp-buffer",
-  -- path completions
-   "hrsh7th/cmp-path",
-  -- snippet completions
-	 "saadparwaiz1/cmp_luasnip",
-  -- command completions
-   "hrsh7th/cmp-cmdline",
-  -- spelling completions
-   "f3fora/cmp-spell",
-  -- helps Vimtex completions
-   "hrsh7th/cmp-omni",
-},
-"EdenEast/nightfox.nvim", -- preferred colorscheme
+	{
+		"EdenEast/nightfox.nvim", -- preferred colorscheme
+		"catppuccin/nvim",
+		as = "catppuccin", -- Using Packer
+		"navarasu/onedark.nvim",
+		"sainnhe/everforest",
+		"christoomey/vim-tmux-navigator", -- tmux & split window navigation
+		"szw/vim-maximizer", -- maximizes and restores current window
+		"inkarkat/vim-ReplaceWithRegister",
+	},
+	--file folder
+	"nvim-neo-tree/neo-tree.nvim",
+	branch = "v2.x",
+	--cmp
+	{
+		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-nvim-lsp",
+		-- buffer completions
+		"hrsh7th/cmp-buffer",
+		-- path completions
+		"hrsh7th/cmp-path",
+		-- snippet completions
+		"saadparwaiz1/cmp_luasnip",
+		-- command completions
+		"hrsh7th/cmp-cmdline",
+		-- spelling completions
+		"f3fora/cmp-spell",
+		-- helps Vimtex completions
+		"hrsh7th/cmp-omni",
+	},
+	"EdenEast/nightfox.nvim", -- preferred colorscheme
 	{ "catppuccin/nvim", as = "catppuccin" }, -- Using Packer
 	"navarasu/onedark.nvim",
 	"sainnhe/everforest",
@@ -183,18 +186,14 @@ return {
 		},
 	},
 	{
-		"gelguy/wilder.nvim",
-		config = function()
-			-- config goes here
-		end,
-	},
-	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
 			require("lsp_lines").setup()
 		end,
 	},
-	'folke/tokyonight.nvim',
-	'beauwilliams/focus.nvim',
-	'glepnir/galaxyline.nvim',
+	"folke/tokyonight.nvim",
+	"beauwilliams/focus.nvim",
+	"glepnir/galaxyline.nvim",
+	-- "psliwka/vim-smoothie",
+	-- "RRethy/vim-illuminate",
 }
