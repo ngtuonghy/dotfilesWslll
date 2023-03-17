@@ -1,44 +1,37 @@
-local use = require('utils').use
+require("manager-plugins.plugins-setup")
+require("manager-plugins.list-plugins")
 
--- General configs
-require('configs.options')
-require('configs.keymaps')
-require('configs.autocmds')
-require('configs.commands')
-require('configs.diagnostics')
-require('configs.neovide')
+require("harvous.core.options")
+require("harvous.core.keymaps")
+require("harvous.core.colorscheme")
+require("harvous.core.which-key")
 
--- Lazy
-require('utils.lazy')
+require("harvous.syntax.autopairs")
+require("harvous.syntax.rainbow2")
+require("harvous.syntax.colorizer")
+require("harvous.syntax.modes")
+require("harvous.syntax.navigator")
 
-local plugins = {
- -- use 'catppuccin',
-  use 'onedark', --- catppuccin, tokyonight(night,storm,day,moon)
-  use 'which-key',
-  use 'neo-tree',
-  use 'alpha',
-  use 'telescope',
-  use 'noice-notify',
-  use 'treesitter',
-  use 'lsp',
-  use 'mason',
-  use 'cmp',
-  use 'luasnip',
-  use 'hop',
-  use 'autopairs',
-  use 'windows',
-  use 'yanky',
-  use 'null-ls',
-  use 'Comment',
-  use 'dap',
-  use 'dap-ui',
+require("harvous.lsp.null-ls")
+require("harvous.lsp.mason")
+require("harvous.lsp.lspconfig")
 
-}
-require('lazy').setup({
-  spec = plugins,
-  install = {
-    colorscheme = { 'onedark' },
-  },
-})
-
-vim.cmd.source('~/.config/nvim/config.vim')
+require("harvous.indentline")
+require("harvous.neo-tree")
+require("harvous.cmp")
+require("harvous.telescope")
+require("harvous.hlslens")
+require("harvous.treesitter")
+require("harvous.hop")
+require("harvous.bufferline")
+-- require("harvous.lualine")
+require("harvous.toggleterm")
+require("harvous.alpha-nvim")
+require("harvous.noice")
+require("harvous.autocommands")
+require("harvous.gitsigns")
+require("harvous.comment")
+require("harvous.other")
+-- require("harvous.galaxyline")
+require("harvous.dap")
+require("harvous.dap-ui")
