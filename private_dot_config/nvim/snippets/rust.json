@@ -1,7 +1,0 @@
-{
-  "closure": {
-    "prefix": "closure",
-    "body": "|$1| {$2}",
-    "description": "Closure"
-  }
-}
