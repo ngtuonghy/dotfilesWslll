@@ -29,3 +29,8 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<cr>") -- make the wind
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<cr>") -- make the window smaller vertically
 vim.keymap.set("n", "<C-Up>", "<cmd>horizontal resize +2<cr>") -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set("n", "<C-Down>", "<cmd>horizontal resize -2<cr>") --
+
+vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")

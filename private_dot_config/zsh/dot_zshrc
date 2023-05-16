@@ -79,11 +79,11 @@ SAVEHIST=10000
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # # In .zshrc
-plugins=(git web-search history dirhistory copybuffer copyfile zsh-autosuggestions web-search fast-syntax-highlighting zsh-vi-mode)
+plugins=(git web-search history dirhistory copybuffer copyfile zsh-autosuggestions tmux web-search fast-syntax-highlighting zsh-vi-mode)
 #locattion zcompdump-
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
-
+TMUX_MOTD=false
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -114,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 source "$HOME/.openai_key.zsh"
 # neofetch
-alias httpsmirrors="rate-mirrors --allow-root --protocol https manjaro | sudo tee /etc/pacman.d/mirrorlist"
+alias httpsmirrors="rate-mirrors --allow-root --protocol https arch | sudo tee /etc/pacman.d/mirrorlist"
 
 #############
 #config nvim#
@@ -133,3 +133,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 # Only changing the escape key to `jk` in insert mode, we still
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+alias tmux="TERM=screen-256color-bce tmux"
+
