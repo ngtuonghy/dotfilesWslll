@@ -92,6 +92,7 @@ return {
       ["Bw"] = { "<cmd>bwipeout<CR>", "Window delete " },
       ["Bd"] = { "<cmd>bdelete<CR>", "Window delete " },
       ["U"] = { "<cmd>UndotreeToggle<CR>", "UndotreeToggle" },
+      ["T"] = { "<cmd>TroubleToggle<CR>", "TroubleToggle" },
       a = {
         name = "AutoRunner",
         r = { "<cmd>AutoRunnerRun<cr>", "Run the command" },
