@@ -3,21 +3,28 @@
 -- Add any additional keymaps here
 ---------------------
 
-local opts = { noremap = true, silent = true }
+--local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+--local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+--local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 -- keymap("", "<Space>", "<Nop>", opts) -- caused conflict with WhichKey
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.mapleader = " "
+----------------------
 ---------------------
--- General Keymaps
----------------------
+-- (nnoremap <leader>d "_d)-
+-- xnoremap <leader>d "_d
+-- xnoremap <leader>p "_dP
+--until.nnoremap.set("n", "<leader>d", "_d")
+vim.keymap.set("n", "<leader>d", '"d')
+vim.keymap.set("n", "d", '"_d')
+vim.keymap.set("n", "x", '"_x')
+
 vim.keymap.set("i", "jk", "<ESC>")
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")

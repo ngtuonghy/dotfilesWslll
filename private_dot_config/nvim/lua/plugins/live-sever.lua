@@ -1,4 +1,4 @@
 return {
-  "barrett-ruth/live-server.nvim",
+  "manzeloth/live-server",
   config = function() end,
 }
