@@ -1,4 +1,5 @@
 return {
-  "manzeloth/live-server",
-  config = function() end,
+  "barrett-ruth/live-server.nvim",
+  build = "yarn global add live-server",
+  config = true,
 }

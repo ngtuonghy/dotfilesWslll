@@ -6,4 +6,5 @@ return {
   { "nvim-lualine/lualine.nvim", enabled = true },
   { "folke/which-key.nvim", enabled = true },
   { "windwp/nvim-ts-autotag", enabled = false },
+  { "chikko80/error-lens.nvim", enabled = true },
 }

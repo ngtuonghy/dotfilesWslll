@@ -21,8 +21,8 @@ vim.g.mapleader = " "
 -- xnoremap <leader>d "_d
 -- xnoremap <leader>p "_dP
 --until.nnoremap.set("n", "<leader>d", "_d")
-vim.keymap.set("n", "<leader>d", '"d')
-vim.keymap.set("n", "d", '"_d')
+-- vim.keymap.set("n", "<leader>d", '"d')
+-- vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("n", "x", '"_x')
 
 vim.keymap.set("i", "jk", "<ESC>")
