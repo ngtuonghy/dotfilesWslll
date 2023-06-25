@@ -1,30 +1,69 @@
 ---------
--- Cmp --
+-- cmp --
 ---------
 --
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    "onsails/lspkind-nvim", -- Completion menu icons
-    "saadparwaiz1/cmp_luasnip", -- Snippets
-    "hrsh7th/cmp-nvim-lsp", -- LSP completion
-    "hrsh7th/cmp-buffer", -- Buffer completion
-    "hrsh7th/cmp-path", -- Path completion
-    "hrsh7th/cmp-cmdline", -- Command-line completion
-    "hrsh7th/cmp-nvim-lua", -- Nvim builtins completion
-    "hrsh7th/cmp-nvim-lsp-signature-help", -- Signature
+    "onsails/lspkind-nvim", -- completion menu icons
+    "saadparwaiz1/cmp_luasnip", -- snippets
+    "hrsh7th/cmp-nvim-lsp", -- lsp completion
+    "hrsh7th/cmp-buffer", -- buffer completion
+    "hrsh7th/cmp-path", -- path completion
+    "hrsh7th/cmp-cmdline", -- command-line completion
+    "hrsh7th/cmp-nvim-lua", -- nvim builtins completion
+    "hrsh7th/cmp-nvim-lsp-signature-help", -- signature
   },
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = { "insertenter", "cmdlineenter" },
   config = function()
-    --  local visible_buffers = require("utils").visible_buffers
-
-    local nvim_cmp = require("cmp")
+    local cmp = require("cmp")
     local luasnip = require("luasnip")
-    local cmp_disabled = nvim_cmp.config.disable
-    local cmp_insert = { behavior = nvim_cmp.SelectBehavior.Insert }
-    local lspkind = require("lspkind")
+    --local lspkind = require("lspkind")
+    local cmp_insert = { behavior = cmp.SelectBehavior.Insert }
+    local cmp_disabled = cmp.config.disable
+    local icons = require("config.icons")
 
-    vim.opt.completeopt = "menuone,noselect"
+    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "cyan" })
+
+    local check_backspace = function()
+      local col = vim.fn.col(".") - 1
+      return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+    end
+
+    -- local function cmp_formatting()
+    --   return function(entry, vim_item)
+    --     local format_opts = { mode = "symbol_text", maxwidth = 25 }
+    --     local kind = lspkind.cmp_format(format_opts)(entry, vim_item)
+    --     local strings = vim.split(kind.kind, "%s", { trimempty = true })
+    --
+    --     kind.kind = strings[1] or ""
+    --     kind.menu = "  " .. (strings[2] or "")
+    --
+    --     return kind
+    --   end
+    -- end
+
+    local function complete(fallback)
+      if cmp.visible() then
+        cmp.mapping.confirm({ select = true })()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif check_backspace() then
+        fallback()
+      else
+        fallback()
+      end
+    end
+
+    local function cmdline_complete()
+      if cmp.visible() then
+        cmp.mapping.confirm({ select = true })()
+      else
+        cmp.complete()
+      end
+    end
 
     local function cmp_map(rhs, modes)
       if modes == nil then
@@ -34,98 +73,32 @@ return {
           modes = { modes }
         end
       end
-      return nvim_cmp.mapping(rhs, modes)
+      return cmp.mapping(rhs, modes)
     end
 
     local function toggle_complete()
       return function()
-        if nvim_cmp.visible() then
-          nvim_cmp.close()
+        if cmp.visible() then
+          cmp.close()
         else
-          nvim_cmp.complete()
+          cmp.complete()
         end
       end
     end
 
-    local function complete()
-      if nvim_cmp.visible() then
-        nvim_cmp.mapping.confirm({ select = true })()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      else
-        nvim_cmp.complete()
-      end
-    end
-
-    local function cmdline_complete()
-      if nvim_cmp.visible() then
-        nvim_cmp.mapping.confirm({ select = true })()
-      else
-        nvim_cmp.complete()
-      end
-    end
-
-    local function join(tbl1, tbl2)
-      local tbl3 = {}
-      for _, item in ipairs(tbl1) do
-        table.insert(tbl3, item)
-      end
-      for _, item in ipairs(tbl2) do
-        table.insert(tbl3, item)
-      end
-      return tbl3
-    end
-
-    nvim_cmp.PreselectMode = true
-
-    local sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip", max_item_count = 5 },
-      { name = "nvim_lua" },
-      --{ name = "nvim_lsp_signature_help" },
-      { name = "path", option = { trailing_slash = true } },
-      {
-        name = "buffer",
-        max_item_count = 3,
-        keyword_length = 2,
-        option = {
-          get_bufnrs = visible_buffers, -- Suggest words from all visible buffers
-        },
-      },
-    }
-
-    -- -- LSPKind
-    --    lspkind.init({
-    --    symbol_map = require("config.icons").icons,
-    --  })
-    --
-    -- Places icon to the left, with margin
-    local function cmp_formatting()
-      return function(entry, vim_item)
-        local format_opts = { mode = "symbol_text", maxwidth = 50 }
-        local kind = lspkind.cmp_format(format_opts)(entry, vim_item)
-        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
-        kind.kind = strings[1] or ""
-        kind.menu = "  " .. (strings[2] or "")
-
-        return kind
-      end
-    end
-
-    nvim_cmp.setup({
+    cmp.setup({
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body)
+          luasnip.lsp_expand(args.body) -- for `luasnip` users.
         end,
       },
       mapping = {
-        ["<C-j>"] = cmp_map(nvim_cmp.mapping.select_next_item(cmp_insert)),
-        ["<C-k>"] = cmp_map(nvim_cmp.mapping.select_prev_item(cmp_insert)),
-        ["<C-b>"] = cmp_map(nvim_cmp.mapping.scroll_docs(-4)),
-        ["<C-f>"] = cmp_map(nvim_cmp.mapping.scroll_docs(4)),
+        ["<C-j>"] = cmp_map(cmp.mapping.select_next_item(cmp_insert)),
+        ["<C-k>"] = cmp_map(cmp.mapping.select_prev_item(cmp_insert)),
+        ["<C-b>"] = cmp_map(cmp.mapping.scroll_docs(-4)),
+        ["<C-f>"] = cmp_map(cmp.mapping.scroll_docs(4)),
         ["<C-Space>"] = cmp_map(toggle_complete(), { "i", "c", "s" }),
-        ["<Tab>"] = nvim_cmp.mapping({
+        ["<Tab>"] = cmp.mapping({
           i = complete,
           c = cmdline_complete,
         }),
@@ -133,43 +106,53 @@ return {
         ["<C-n>"] = cmp_disabled,
         ["<C-p>"] = cmp_disabled,
       },
-      sources = nvim_cmp.config.sources(sources),
-      window = {
-        completion = {
-          col_offset = -2, -- To fit lspkind icon
-          side_padding = 1, -- One character margin
-        },
-      },
       formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = cmp_formatting(),
+        format = function(_, vim_item)
+          local kind = vim_item.kind
+          -- local format_opts = { mode = "symbol_text", maxwidth = 50 }
+          vim_item.kind = icons.kind[kind] or "?"
+          vim_item.menu = "󱦰 " .. kind
+          -- vim_item.abbr = string.sub(vim_item.abbr, 1, 10)
+          vim_item.abbr = vim_item.abbr:match("[^(]+")
+          return vim_item
+        end,
       },
-      completion = {
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
+        -- { name = "nvim_lsp_signature_help" },
+      },
+      confirm_opts = {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      },
+      window = {
         completeopt = "menu,menuone,noinsert",
+        -- documentation = cmp.config.window.bordered(),
+        --completion = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+          border = "none",
+          side_padding = 0,
+        }),
+      },
+      experimental = {
+        ghost_text = true,
+        -- native_menu = false,
       },
     })
 
-    vim.api.nvim_create_augroup("TabNine", {})
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "markdown", "text", "tex", "gitcommit" },
-      callback = function()
-        nvim_cmp.setup.buffer({
-          sources = nvim_cmp.config.sources(join({ { name = "cmp_tabnine" } }, sources)),
-        })
-      end,
-      group = "TabNine",
-    })
-
-    -- Use buffer source for `/` (searching)
-    nvim_cmp.setup.cmdline("/", {
+    cmp.setup.cmdline("/", {
       sources = {
         { name = "buffer" },
       },
     })
 
     -- Use cmdline & path source for `:`
-    nvim_cmp.setup.cmdline(":", {
-      sources = nvim_cmp.config.sources({
+    cmp.setup.cmdline(":", {
+      sources = cmp.config.sources({
         { name = "path" },
         { name = "cmdline" },
       }),

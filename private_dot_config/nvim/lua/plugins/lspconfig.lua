@@ -7,6 +7,7 @@ return {
         tsserver = {},
         cssls = {},
       },
+      require("lspconfig").lua_ls,
     },
   },
 }
