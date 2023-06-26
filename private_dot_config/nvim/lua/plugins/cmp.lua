@@ -18,7 +18,8 @@ return {
     local cmp_insert = { behavior = cmp.SelectBehavior.Insert }
     local cmp_disabled = cmp.config.disable
 
-    --    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "cyan" })
+    vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "cyan" })
+    vim.api.nvim_set_hl(0, "myPmenu", { bg = "black", fg = "white" })
 
     local check_backspace = function()
       local col = vim.fn.col(".") - 1
@@ -143,8 +144,8 @@ return {
         -- documentation = cmp.config.window.bordered(),
         --completion = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
-          border = "none",
-          side_padding = 0,
+          border = "single",
+          --  winhighlight = "Normal:myPmenu,FloatBorder:myPmenu,CorsorLine:myPmenu,Seach:None",
         }),
       },
       experimental = {

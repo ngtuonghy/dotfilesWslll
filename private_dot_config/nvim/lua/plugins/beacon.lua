@@ -3,7 +3,7 @@
 ------------
 return {
   "DanilaMihailov/beacon.nvim",
-  cond = function()
+  config = function()
     return not vim.g.neovide
   end,
   event = "WinEnter",
