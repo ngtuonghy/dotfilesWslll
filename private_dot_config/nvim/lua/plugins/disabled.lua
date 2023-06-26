@@ -9,4 +9,5 @@ return {
   { "chikko80/error-lens.nvim", enabled = true },
   { "folke/neodev.nvim", enabled = true },
   { "max397574/colortils.nvim", enabled = false },
+  { "j-hui/fidget.nvim", enabled = true },
 }
