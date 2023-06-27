@@ -23,6 +23,7 @@ vim.g.mapleader = " "
 --until.nnoremap.set("n", "<leader>d", "_d")
 -- vim.keymap.set("n", "<leader>d", '"d')
 -- vim.keymap.set("n", "d", '"_d')
+vim.keymap.set("n", "<leader>ua", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
 vim.keymap.set("n", "x", '"_x')
 
 vim.keymap.set("i", "jk", "<ESC>")

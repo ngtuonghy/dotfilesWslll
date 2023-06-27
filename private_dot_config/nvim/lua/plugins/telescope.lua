@@ -28,7 +28,7 @@ return {
       local cmd = "colorscheme " .. selected[1]
       vim.cmd(cmd)
 
-      local init = vim.fn.expand("~/.config/nvim/init.lua")
+      local init = vim.fn.expand("~/kholuutru/init.txt")
       local job_cmd = "sed -i '4d'" .. init .. "&& echo" .. cmd .. ">>" .. init
       vim.fn.jobstart(job_cmd)
 
@@ -52,7 +52,7 @@ return {
         return true
       end,
     }
-    --   local colors = pickers.new(dropdown, opts)
+    --  local colors = pickers.new(dropdown, opts)
     --  colors:find()
   end,
 }

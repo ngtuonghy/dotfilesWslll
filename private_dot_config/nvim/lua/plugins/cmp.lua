@@ -9,6 +9,8 @@ return {
     "hrsh7th/cmp-cmdline", -- command-line completion
     "hrsh7th/cmp-nvim-lua", -- nvim builtins completion
     "hrsh7th/cmp-nvim-lsp-signature-help", -- signature
+    "tzachar/cmp-tabnine",
+    build = "./install.sh",
   },
   event = { "insertenter", "cmdlineenter" },
   config = function()
@@ -19,8 +21,8 @@ return {
     local cmp_disabled = cmp.config.disable
 
     vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "cyan" })
-    vim.api.nvim_set_hl(0, "myPmenu", { bg = "black", fg = "white" })
-
+    vim.api.nvim_set_hl(0, "BackgroundCmpItemkindSnippet", { fg = "white" })
+    vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#CD66F2" })
     local check_backspace = function()
       local col = vim.fn.col(".") - 1
       return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -30,8 +32,8 @@ return {
       return function(entry, vim_item)
         local format_opts = { mode = "symbol_text", ellipsis_char = " 󰍻 ", maxwidth = 20 }
         local kind = lspkind.cmp_format(format_opts)(entry, vim_item)
-        local strings = vim.split(kind.kind, "%s", { trimempty = true })
 
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = strings[1] or ""
         kind.menu = "󱦰 " .. (strings[2] or "")
         kind.abbr = vim_item.abbr:match("[^(]+")
@@ -81,8 +83,12 @@ return {
         end
       end
     end
-
+    vim.g.cmptoggle = true
     cmp.setup({
+      enabled = function()
+        return vim.g.cmptoggle
+      end,
+
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body) -- for `luasnip` users.
@@ -103,36 +109,16 @@ return {
         ["<C-p>"] = cmp_disabled,
       },
       formatting = {
-
         fields = { "kind", "abbr", "menu" },
         format = cmp_formatting(),
-        -- format = lspkind.cmp_format({
-        --   mode = "symbol", -- show only symbol annotations
-        --   maxwidth = 20, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-        --   ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char
-        -- }),
-        -- before = function(_, vim_item)
-        --   vim_item.abbr = vim_item.abbr:match("[^(]+")
-        --   local kind = vim_item.kind
-        --   vim_item.kidnd = kind.kind[kind] or "?"
-        --   vim_item.menu = "󱦰 " .. kind
-        --   return vim_item
-        -- end,
-        -- format = function(_, vim_item)
-        --   local kind = vim_item.kind
-        --   -- local format_opts = { mode = "symbol_text", maxwidth = 50 }
-        --   vim_item.kind = lunarIcons.kind[kind] or "?"
-        --   vim_item.menu = "󱦰 " .. kind
-        --   -- vim_item.abbr = string.sub(vim_item.abbr, 1, 10)
-        --   vim_item.abbr = vim_item.abbr:match("[^(]+")
-        --   return vim_item
-        -- end,
       },
+
       sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        --{ name = "cmp_tabnine" },
         -- { name = "nvim_lsp_signature_help" },
       },
       confirm_opts = {
@@ -145,7 +131,7 @@ return {
         --completion = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
           border = "single",
-          --  winhighlight = "Normal:myPmenu,FloatBorder:myPmenu,CorsorLine:myPmenu,Seach:None",
+          winhighlight = "Normal:myPmenu,FloatBorder:myPmenu,CorsorLine:myPmenu,Seach:None",
         }),
       },
       experimental = {
