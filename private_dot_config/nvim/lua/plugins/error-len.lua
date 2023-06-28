@@ -13,14 +13,14 @@ return {
     prefix = 5, -- distance code <-> diagnostic message
     -- default colors
     colors = {
-      error_fg = "#FF6363", -- diagnostic font color
-      error_bg = "#4B252C", -- diagnostic line color
-      warn_fg = "#FA973A",
-      warn_bg = "#403733",
-      info_fg = "#5B38E8",
-      info_bg = "#281478",
+      error_fg = "#ff6464", -- diagnostic font color
+      error_bg = "#392d3e", -- diagnostic line color
+      warn_fg = "#fa973a",
+      warn_bg = "#3c343a",
+      info_fg = "#06b7e4",
+      info_bg = "#1f3b51",
       hint_fg = "#25E64B",
-      hint_bg = "#147828",
+      hint_bg = "#233745",
     },
   },
 }
