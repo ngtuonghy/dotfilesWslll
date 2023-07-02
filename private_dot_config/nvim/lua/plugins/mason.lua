@@ -7,6 +7,7 @@ return {
       "clangd",
       "pyright",
       "jdtls",
+      "csharp-language-server",
       -- "flake8",
     },
   },

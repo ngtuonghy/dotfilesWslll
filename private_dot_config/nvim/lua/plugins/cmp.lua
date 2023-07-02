@@ -23,6 +23,9 @@ return {
     vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "cyan" })
     vim.api.nvim_set_hl(0, "BackgroundCmpItemkindSnippet", { fg = "white" })
     vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#CD66F2" })
+    vim.api.nvim_set_hl(0, "myPmenu", { bg = "#24283b", fg = "cyan" })
+    vim.api.nvim_set_hl(0, "myPmenuSel", { bg = "#b3ffff", fg = "black", bold = true, italic = true })
+
     local check_backspace = function()
       local col = vim.fn.col(".") - 1
       return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -131,8 +134,11 @@ return {
         --completion = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
           border = "single",
-          winhighlight = "Normal:myPmenu,FloatBorder:myPmenu,CorsorLine:myPmenu,Seach:None",
+          -- winhighlight = "Normal:myPmenu,FloatBorder:myPmenu,CursorLine:myPmenuSel,Seach:None",
         }),
+        documentation = {
+          -- winhighlight = "Normal:myPmenu,FloatBorder:myPmenu,CursorLine:myPmenuSel,Seach:None",
+        },
       },
       experimental = {
         ghost_text = true,
