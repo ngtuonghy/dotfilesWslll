@@ -10,7 +10,5 @@ return {
   { "folke/neodev.nvim", enabled = true },
   { "max397574/colortils.nvim", enabled = false },
   { "j-hui/fidget.nvim", enabled = true },
-  { "barrett-ruth/live-server.nvim", enabled = true },
   { "airblade/vim-gitgutter", enabled = false },
-  { "barrett-ruth/live-server.nvim", enabled = true },
 }
