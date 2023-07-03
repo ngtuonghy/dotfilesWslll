@@ -9,8 +9,6 @@ return {
     "hrsh7th/cmp-cmdline", -- command-line completion
     "hrsh7th/cmp-nvim-lua", -- nvim builtins completion
     "hrsh7th/cmp-nvim-lsp-signature-help", -- signature
-    "tzachar/cmp-tabnine",
-    build = "./install.sh",
   },
   event = { "insertenter", "cmdlineenter" },
   config = function()
@@ -121,7 +119,7 @@ return {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        --{ name = "cmp_tabnine" },
+        { name = "cmp_tabnine" },
         -- { name = "nvim_lsp_signature_help" },
       },
       confirm_opts = {
