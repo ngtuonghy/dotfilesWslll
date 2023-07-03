@@ -1,1 +1,15 @@
 private_dot_config/nvim/live-server/
+spell/
+sessions/
+packages/
+
+plugin/work.lua
+
+# rest.nvim
+http
+
+# sumneku-lua
+.luarc.json
+
+# lazy.nvim
+lazy-lock.json
